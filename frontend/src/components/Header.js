@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+// /* eslint-disable prettier/prettier */
 import React from "react";
 import { Navbar, Container } from "react-bootstrap";
 

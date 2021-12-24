@@ -6,14 +6,14 @@ from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=".env.local")
 
-print(os.environ)
-
 UNSPLASH_URL = "https://api.unsplash.com/photos/random"
-UNSPLASH_ACCESS_KEY = os.environ.get("UNSPLASH_ACCESS_KEY", "")
+UNSPLASH_ACCESS_KEY = os.environ.get("UNSPLASH_API_KEY", "")
+DEBUG = os.environ.get("DEBUG", False)
 if not UNSPLASH_ACCESS_KEY:
     raise EnvironmentError("API Acees key is not set")
-    
+
 app = Flask(__name__)
+app.config["DEBUG"] = DEBUG
 
 @app.route("/new-image")
 def new_image():
@@ -31,4 +31,4 @@ def new_image():
     return {"data": data}
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5050)
+    app.run(port=5050)
